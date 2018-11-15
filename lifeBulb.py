@@ -2,10 +2,10 @@ import requests
 import re
 import maya.cmds as cmds
 
-#This function takes a float from a live data set and scales it to the range
-#0 to 1, which is the range of the intensity attibrute on the light object
-#in Maya. It then sets the intensity attribute to the value of the scaled
-#argument
+#This program takes a float from a live data set and scales it to the range
+#0 to 1, which is the range of the incandescence attibrute on the "lightbulb" object
+#in Maya. It then sets the incandescence attribute to the value of the scaled
+#float
 
 #here: imports data from an api and uses regex to parse out a single value
 headers = {
@@ -21,7 +21,7 @@ population = int(data_text_2ndpass[0])
 
 #here: takes the value parsed through regex and uses it to set the
 #      relative incandescence of the LifeBulb
-max = 500 #this value is arbitrary
+max = 500
 incand = population/max
 
 cmds.setAttr("bulbShade.incandescence",incand,incand,incand, type="double3")
